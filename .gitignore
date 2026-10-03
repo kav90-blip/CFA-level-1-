@@ -4,3 +4,4 @@ dist/
 *.local
 portfolio_sim/portfolio.local*.json
 portfolio_sim/*_local.png
+__pycache__/
