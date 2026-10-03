@@ -47,6 +47,11 @@ def report(cfg, paths):
     print("\nPercentiles of terminal value:")
     for p in (5, 10, 25, 50, 75, 90, 95):
         print(f"  {p:>2}th: {np.percentile(final, p):>14,.0f}")
+    infl = cfg.get("inflation")
+    if infl is not None:
+        d = (1 + infl) ** cfg["horizon_years"]
+        print(f"\nIn today's money ({infl:.1%} inflation): "
+              + "  ".join(f"p{p}={np.percentile(final, p) / d:,.0f}" for p in (5, 25, 50, 75, 95)))
     print(f"\nMean: {final.mean():,.0f}   Std: {final.std():,.0f}")
     print(f"P(final < total contributed): {(final < total_in).mean():.1%}")
     print(f"P(final < 0.5x contributed):  {(final < 0.5 * total_in).mean():.1%}")

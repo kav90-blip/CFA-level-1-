@@ -2,3 +2,5 @@ node_modules/
 dist/
 .env
 *.local
+portfolio_sim/portfolio.local*.json
+portfolio_sim/*_local.png
